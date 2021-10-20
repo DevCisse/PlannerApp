@@ -1,0 +1,39 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+<div style="max-width: 400px;">
+    <EditForm Model="model" OnValidSubmit="HandleSubmit">
+        <DataAnnotationsValidator />
+        <MudCard>
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6"> Welcome to planner App</MudText>
+                </CardHeaderContent>
+            </MudCardHeader>
+
+            <MudCardContent>
+
+                <MudTextField Label="Email" Class="mt-3"
+                              @bind-Value="model.Email" For="@(() => model.Email)"  />
+                <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
+                              @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password" />
+
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login </MudButton>
+                <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Class="ml-auto">Create Account</MudButton>
+            </MudCardActions>
+        </MudCard>
+     
+
+
+    </EditForm>
+</div>
+
+@code {
+
+
+}
+
+@code {
+
+}
