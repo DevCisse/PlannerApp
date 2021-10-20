@@ -1,6 +1,7 @@
 ﻿@using System.ComponentModel.DataAnnotations
 
-<div style="max-width: 400px;">
+@*@inject ISnackbar Snackbar
+*@<div style="max-width: 400px;">
     <EditForm Model="model" OnValidSubmit="HandleSubmit">
         <DataAnnotationsValidator />
         <MudCard>
@@ -13,17 +14,20 @@
             <MudCardContent>
 
                 <MudTextField Label="Email" Class="mt-3"
-                              @bind-Value="model.Email" For="@(() => model.Email)"  />
+                              @bind-Value="model.Email" For="@(() => model.Email)" />
                 <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
                               @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password" />
 
+               @*
+                              <MudButton Color="Color.Error" @onclick="@(() => Snackbar.Add("Reactor meltdown is imminent", Severity.Error))">Error Snackbar</MudButton>*@
+
             </MudCardContent>
             <MudCardActions>
-                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login </MudButton>
+                <MudButton Disabled="isBusy" ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login </MudButton>
                 <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Class="ml-auto">Create Account</MudButton>
             </MudCardActions>
         </MudCard>
-     
+
 
 
     </EditForm>
