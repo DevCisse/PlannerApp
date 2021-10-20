@@ -1,4 +1,5 @@
 using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,8 +28,15 @@ namespace PlannerApp
                 //  client.DefaultRequestVersion = new Version()
             }).AddHttpMessageHandler<AuthorizationMessageHandler>();
 
-            builder.Services.AddTransient<AuthorizationMessageHandler>();   
+            builder.Services.AddTransient<AuthorizationMessageHandler>();
             builder.Services.AddScoped(sp => sp.GetService<IHttpClientFactory>().CreateClient("PlannerApp.Api"));
+
+
+
+            //allows the use of Authorize attribute
+            builder.Services.AddAuthorizationCore();
+
+            builder.Services.AddScoped<AuthenticationStateProvider, JwtAuthenticationStateProvider>();
 
 
 

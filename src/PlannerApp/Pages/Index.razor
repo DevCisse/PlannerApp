@@ -4,4 +4,17 @@
 
 Welcome to your new app.
 
+
+<AuthorizeView>
+    <Authorized>
+       
+        <h2>  
+             Welcome @context.User.FindFirst(System.Security.Claims.ClaimTypes.GivenName).Value
+        </h2>
+    </Authorized>
+    <NotAuthorized>
+        <h2>Please Login </h2>
+    </NotAuthorized>
+</AuthorizeView>
+
 <SurveyPrompt Title="How is Blazor working for you?" />
