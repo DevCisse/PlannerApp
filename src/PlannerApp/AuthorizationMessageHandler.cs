@@ -1,6 +1,7 @@
 ﻿using Blazored.LocalStorage;
 using System;
 using System.Net.Http;
+
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,7 +22,10 @@ namespace PlannerApp
                 if(await storage.ContainKeyAsync("access_token"))
                 {
                     var token = await storage.GetItemAsStringAsync("access_token");
-                    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer,", token);
+
+                    //request.Headers.TryAddWithoutValidation("bearer",token);
+                    var authHeaderValue = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                    request.Headers.Authorization = authHeaderValue;
                 }
 
                 Console.WriteLine("Authorization message handler called");

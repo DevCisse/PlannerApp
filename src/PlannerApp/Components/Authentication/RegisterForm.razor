@@ -1,0 +1,37 @@
+﻿
+<div style="max-width: 400px;">
+    <EditForm Model="model" OnValidSubmit="HandleSubmit">
+        <Blazored.FluentValidation.FluentValidationValidator />
+        <MudCard>
+            <MudCardHeader>
+                <CardHeaderContent>
+                    <MudText Typo="Typo.h6"> Welcome to planner App</MudText>
+                    <MudText Typo="Typo.body2"> Create a new account</MudText>
+                </CardHeaderContent>
+            </MudCardHeader>
+
+            <MudCardContent>
+
+                <MudTextField Label="Email" Class="mt-3"  @bind-Value="model.Email" For="@(() => model.Email)" />
+
+                <MudTextField Label="First Name" Class="mt-3"  @bind-Value="model.FirstName" For="@(() => model.FirstName)" />
+                <MudTextField Label="Last  Name" Class="mt-3"  @bind-Value="model.LastName" For="@(() => model.LastName)" />
+
+                <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
+                              @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password" />
+
+                                 <MudTextField Label="Confirm Password" HelperText="Confirm password" Class="mt-3"
+                              @bind-Value="model.ConfirmPassword" For="@(() => model.ConfirmPassword)" InputType="InputType.Password" />
+
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Disabled="isBusy" ButtonType="ButtonType.Submit" Color="Color.Primary" Class="d-block"  Variant="Variant.Filled" >Create Account </MudButton>
+             
+                <MudButton Variant="Variant.Outlined"  Class="ml-auto" Color="Color.Secondary" OnClick= "RedirectToLogin" >Login</MudButton>
+            </MudCardActions>
+        </MudCard>
+
+
+
+    </EditForm>
+</div>

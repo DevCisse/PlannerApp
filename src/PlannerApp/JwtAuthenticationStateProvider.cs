@@ -10,9 +10,6 @@ namespace PlannerApp
     {
         private readonly ILocalStorageService storage;
 
-        public JwtAuthenticationStateProvider()
-        {
-        }
 
         public JwtAuthenticationStateProvider(ILocalStorageService storage)
         {
@@ -28,7 +25,7 @@ namespace PlannerApp
                 //we are going to decode the token 
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var token  = tokenHandler.ReadJwtToken(tokenAsString);
-                var identiy = new ClaimsIdentity(token.Claims, "bearer");
+                var identiy = new ClaimsIdentity(token.Claims, "Bearer");
 
                 var user = new ClaimsPrincipal(identiy);
 
